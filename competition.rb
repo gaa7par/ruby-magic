@@ -65,3 +65,58 @@ class Competition
   end
 end
 
+
+# Add competitors
+
+competitor1 = Competitor.new("John", "English")
+competitor2 = Competitor.new("Sue", "English")
+competitor3 = Competitor.new("Mike", "English")
+competitor4 = Competitor.new("Frank", "English")
+competitor5 = Competitor.new("Joe", "English")
+competitor6 = Competitor.new("Sam", "English")
+competitor7 = Competitor.new("Gizela", "German")
+competitor8 = Competitor.new("Marlene", "German")
+competitor9 = Competitor.new("Français", "French")
+competitor10 = Competitor.new("Maalik", "French")
+competitor11 = Competitor.new("Nathan", "French")
+competitor12 = Competitor.new("Hugo", "French")
+competitor13 = Competitor.new("Alvaro", "Spanish")
+competitor14 = Competitor.new("Ramona", "Spanish")
+competitor15 = Competitor.new("Gabriel", "Portuguese")
+competitor16 = Competitor.new("Leo", "Portuguese")
+competitor17 = Competitor.new("Иван", "Russian")
+competitor18 = Competitor.new("Саша", "Russian")
+
+
+# Add competition
+
+competition = Competition.new
+
+
+# Add competitors to the competition
+
+competition.add(competitor1)
+competition.add(competitor2)
+competition.add(competitor3)
+competition.add(competitor4)
+competition.add(competitor5)
+competition.add(competitor6)
+competition.add(competitor7)
+competition.add(competitor8)
+competition.add(competitor9)
+competition.add(competitor10)
+competition.add(competitor11)
+competition.add(competitor12)
+competition.add(competitor13)
+competition.add(competitor14)
+competition.add(competitor15)
+competition.add(competitor16)
+competition.add(competitor17)
+competition.add(competitor18)
+
+
+# Show output
+
+# puts competitor13.show
+# competition.list
+competition.pair(10)
