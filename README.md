@@ -6,4 +6,6 @@
 <ul>
     <li>Mega Greeter</li>
     <li>Net</li>
+    <li>...</li>
+    <li>Competition</li>
 </ul>
