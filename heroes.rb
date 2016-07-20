@@ -10,64 +10,66 @@ class Hero
     @agility = agility
     @intelligence = intelligence
 
-    @hp = 2 * @strength + @agility
-    @mana = 3 * @intelligence
-    @attack = @strength > @intelligence ? 3 * @strength : 3 * @intelligence
-    @luck = (10 * @agility)
+    @hp = 2 * strength + agility
+    @mana = 3 * intelligence
+    @attack = strength > intelligence ? 3 * strength : 3 * intelligence
+    @luck = (10 * agility)
 
-    @total_points = 2 * (@hp + @mana) + 3 * @attack + rand(@luck)
+    @total_points = 2 * (hp + mana) + 3 * attack + rand(luck)
 
     @warning = "You cannot do that again, wicked!"
     @used = false
   end
 
   def to_s
-    "#{self.class} #{@name} => #{@strength} : #{@agility} : #{@intelligence}"
+    "#{self.class} #{name} => #{strength} : #{agility} : #{intelligence}"
   end
 
   def stats
-    "#{self.class} #{@name} => hp: #{@hp} | mana: #{@mana} | attack: #{@attack} | luck: #{@luck}"
+    "#{self.class} #{name} => hp: #{hp} | mana: #{mana} | attack: #{attack} | luck: #{luck}"
   end
 end
 
 class Knight < Hero
   def rage
-    if @used
-      puts @warning
+    if used
+      puts warning
     else
-      @strength *= 2
-      @agility += 2
-      @used = true
+      strength *= 2
+      agility += 2
+      used = true
     end
   end
 end
 
 class Thief < Hero
   def stab
-    if @used
-      puts @warning
+    if used
+      puts warning
     else
-      @strength += 3
-      @agility += 4
-      @used = true
+      strength += 3
+      agility += 4
+      used = true
     end
   end
 end
 
 class Mage < Hero
   def heal
-    if @used
-      puts @warning
+    if used
+      puts warning
     else
-      @strength *= 0.5
-      @agility += 2
-      @intelligence *= 3
-      @used = true
+      strength *= 0.5
+      agility += 2
+      intelligence *= 3
+      used = true
     end
   end
 end
 
 class Tournament
+  attr_accessor :name, :heroes, :heroes_copy
+
   def initialize(name)
     @name = name
     @heroes = Array.new
@@ -75,26 +77,26 @@ class Tournament
   end
 
   def add(hero)
-    @heroes << hero
-    @heroes_copy << hero
+    heroes << hero
+    heroes_copy << hero
   end
 
   def list
-    @heroes.each do |hero|
+    heroes.each do |hero|
       puts hero.to_s
     end
   end
 
   def list_stats
-    @heroes.each do |hero|
+    heroes.each do |hero|
       puts hero.stats
     end
   end
 
   def fight
-    if @heroes.empty?
+    if heroes.empty?
       "There's no heroes yet!"
-    elsif @heroes.count == 1
+    elsif heroes.count == 1
       "Add more heroes to continue!"
     else
       pair_heroes
@@ -102,13 +104,13 @@ class Tournament
   end
 
   def pair_heroes
-    @heroes.each do |hero1|
-      @heroes_copy.each do |hero2|
+    heroes.each do |hero1|
+      heroes_copy.each do |hero2|
         if hero1 != hero2
           find_winners(hero1, hero2)
         end
       end
-      @heroes_copy.delete(hero1)
+      heroes_copy.delete(hero1)
     end
   end
 
