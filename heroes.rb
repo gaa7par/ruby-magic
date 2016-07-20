@@ -97,24 +97,32 @@ class Tournament
     elsif @heroes.count == 1
       "Add more heroes to continue!"
     else
-      @heroes.each do |hero1|
-        @heroes_copy.each do |hero2|
-          if hero1 != hero2
-            puts "#{hero1.name} vs #{hero2.name}"
-            puts "===>|<==="
-            if hero1.total_points > hero2.total_points
-              puts "#{hero1.name} won!"
-            elsif hero1.total_points < hero2.total_points
-              puts "#{hero2.name} won!"
-            else
-              puts "undefined"
-            end
-            puts
-          end
-        end
-        @heroes_copy.delete(hero1)
-      end
+      pair_heroes
     end
+  end
+
+  def pair_heroes
+    @heroes.each do |hero1|
+      @heroes_copy.each do |hero2|
+        if hero1 != hero2
+          find_winners(hero1, hero2)
+        end
+      end
+      @heroes_copy.delete(hero1)
+    end
+  end
+
+  def find_winners(hero1, hero2)
+    puts "#{hero1.name} vs #{hero2.name}"
+    puts "===>|<==="
+    if hero1.total_points > hero2.total_points
+      puts "#{hero1.name} won!"
+    elsif hero1.total_points < hero2.total_points
+      puts "#{hero2.name} won!"
+    else
+      puts "undefined"
+    end
+    puts
   end
 end
 
